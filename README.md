@@ -1,40 +1,24 @@
-# 🎬 Enhancing Search Engine Relevance for Video Subtitles (Shazam for Subtitles)
+# 🎙️ Audio to Subtitles Converter
 
 ## 📌 Project Overview
-In the digital content era, improving search relevance for video subtitles can enhance accessibility and content discoverability. This project builds an **AI-powered subtitle search engine**, enabling users to retrieve subtitles by providing an **audio snippet** from a movie or TV series. The system supports both **keyword-based** and **semantic search** methods to improve accuracy.
+The Audio to Subtitles Converter is a Streamlit-based web application that converts audio files into subtitles in SRT, TXT, and JSON formats using OpenAI's Whisper model. This tool is useful for content creators, journalists, and anyone who needs accurate speech-to-text transcription with timestamped subtitles.
 
 ## 🚀 Features
-- **Audio-Based Search:** Users provide a **2-minute audio clip**, and the system retrieves relevant subtitles.
-- **Keyword-Based Search:** Implements **TF-IDF & BOW** for exact text matches.
-- **Semantic Search:** Uses **BERT-based SentenceTransformers** for context-aware results.
-- **Efficient Data Storage:** Stores subtitle embeddings in **ChromaDB** for fast retrieval.
-- **Cosine Similarity Matching:** Finds the most relevant subtitle snippets based on embeddings.
+✅ Upload audio files (MP3, WAV, M4A)
+✅ Automatic speech-to-text transcription using Whisper
+✅ Generate SRT subtitles with timestamps
+✅ Basic noise reduction for improved accuracy
+✅ Waveform visualization of the audio
+✅ Editable transcript before exporting
+✅ Download subtitles in SRT, TXT, and JSON formats
 
-## 🏗️ Architecture
-1. **Data Ingestion:**
-   - Read and preprocess subtitle data from `eng_subtitles_database.db`.
-   - Clean subtitle text (remove timestamps, unwanted characters, etc.).
-   - Convert subtitles into **vector embeddings**.
-   
-2. **Vectorization Methods:**
-   - **TF-IDF / BOW** for keyword-based search.
-   - **BERT-based embeddings** for semantic search.
-   - **Document Chunking:** To avoid information loss, subtitles are divided into overlapping chunks before embedding.
-
-3. **Database Storage:**
-   - Store embeddings in **ChromaDB** for quick access.
-
-4. **Query Processing:**
-   - Convert the user’s **audio query to text** using **Whisper AI**.
-   - Generate embeddings for the query.
-   - Compute **cosine similarity** to find relevant subtitles.
 
 ## 🔧 Tech Stack
-- **Programming Language:** Python
-- **Database:** SQLite, ChromaDB
-- **Libraries:** Pandas, NumPy, Scikit-learn, re, sqlite3
-- **NLP Techniques:** TF-IDF, BERT (SentenceTransformers)
-- **Audio Processing:** OpenAI Whisper
+-Python
+-Streamlit (for the web interface)
+-Whisper (for speech-to-text transcription)
+-Librosa (for audio processing)
+-Matplotlib (for waveform visualization)
 
 ## 📂 Dataset
 - The subtitle data is stored in `eng_subtitles_database.db`.
@@ -45,21 +29,16 @@ In the digital content era, improving search relevance for video subtitles can e
 
 ## 📜 Installation & Setup
 ```bash
-# Clone the repository
-git clone https://github.com/your-username/subtitle-search-engine.git
-cd subtitle-search-engine
-
-# Create a virtual environment
-python -m venv venv
-source venv/bin/activate  # On Windows use `venv\Scripts\activate`
-
-# Install dependencies
-pip install -r requirements.txt
-```
-
-## 🏃‍♂️ Usage
-```python
-python main.py  # Start the search engine
+1️⃣ Install Dependencies
+   Run the following command to install required packages:
+   pip install -r requirements.txt
+2️⃣ Run the Application
+   streamlit run app.py
+3️⃣ Use the Web Interface
+   Upload an audio file
+   Select the model size & language
+   Click "Convert to Subtitles"
+   Download the subtitles in your preferred format
 ```
 
 ## 📌 Future Enhancements
